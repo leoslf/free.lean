@@ -1,0 +1,11 @@
+name = "free"
+version = "0.0.1"
+defaultTargets = ["Free"]
+testDriver = "free_tests"
+
+[[lean_lib]]
+name = "Free"
+
+[[lean_exe]]
+name = "free_tests"
+root = "Tests.Main"
