@@ -5,12 +5,14 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  pages: write
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-
     steps:
     - uses: actions/checkout@v4
     - uses: leanprover/lean-action@v1
@@ -29,10 +31,6 @@ jobs:
         path: docbuild/.lake/build/doc/
 
   deploy:
-    permissions:
-      id-token: write
-      pages: write
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
