@@ -37,3 +37,5 @@ instance : Monad (Free f) where
   | ⟨m⟩, f => Free.mk λpure free =>
     m (λa => f a |>.run pure free) free
 
+def Free.lift [Functor f] (m : f a) : Free f a :=
+  Free.mk λpure free => free $ pure <$> m
