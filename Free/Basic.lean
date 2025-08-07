@@ -6,7 +6,7 @@ structure Free (f : Type u -> Type v) (a : Type u) where
   * one to handle a pure value (`a -> r`)
   * one to handle an effectful layer (`f r -> r`)
   -/
-  run : (a -> r) -> (f r -> r) -> r
+  run (pure : a -> r) (free : f r -> r) : r
 
 -- Allow `f` and `a` to be implicit for subsequent definitions
 variable {f : Type u -> Type v}
