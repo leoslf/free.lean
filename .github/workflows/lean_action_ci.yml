@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
 
     steps:
     - uses: actions/checkout@v4
@@ -27,6 +29,10 @@ jobs:
         path: docbuild/.lake/build/doc/
 
   deploy:
+    permissions:
+      id-token: write
+      pages: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
